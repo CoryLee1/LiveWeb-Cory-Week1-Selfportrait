@@ -3,6 +3,7 @@ import express from 'express';
 import { Server } from "socket.io"
 import path from "path";
 import { fileURLToPath } from 'url';
+import cors from 'cors';
 
 const __filename = fileURLToPath(import.meta.url); 
 const __dirname = path.dirname(__filename);
@@ -11,6 +12,13 @@ const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 3500
 const app = express()
 app.use(express.static(path.join(__dirname, "public")));
+// 针对特定来源启用CORS
+const corsOptions = {
+    origin: 'https://github.com',
+    optionsSuccessStatus: 200 // 一些旧版浏览器（IE11, 各种SmartTV）无法处理204
+  };
+  
+  app.use(cors(corsOptions));
 const expressServer = app.listen(PORT,()=>{
     console.log('listening on ${PORT}')
 })
