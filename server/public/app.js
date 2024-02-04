@@ -1,5 +1,5 @@
 // 使用 socket.io 客户端库连接到 WebSocket 服务器
-const socket = io('ws://localhost:3500');
+const socket = io('https://livewebasciiangel.onrender.com');
 
 // 定义一个发送消息的函数，它将在表单提交时被调用
 function sendMessage(e) {
