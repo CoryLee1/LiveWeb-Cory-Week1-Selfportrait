@@ -46,14 +46,3 @@ socket.on("message", (data) => {
     // 使用接收到的数据调用 createMarquee 函数，而不是创建 li 元素
     createMarquee(data);
 });
-import cors from 'cors';
-import express from 'express';
-const app = express();
-
-// 针对特定来源启用CORS
-const corsOptions = {
-  origin: 'https://github.com',
-  optionsSuccessStatus: 200 // 一些旧版浏览器（IE11, 各种SmartTV）无法处理204
-};
-
-app.use(cors(corsOptions));
