@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--hello world -->
+<HTML>
+    <head>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <title>Hello Page, Week1</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.min.js" integrity="sha512-skuhu6jj+sQnhLq1Txsack8VfnIrX8wL+MTFilYlFFT/NuLJm7eya7zOROs39Jy5cjASMEWqxLzijRVmKhsqWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+            window.addEventListener("load", init);
+             
+            function init() {
+                let title = document.getElementById("title");
+                let titleImage = document.getElementById("titleImage");
+
+                title.addEventListener("mouseover", function() {
+                    title.innerHTML = "CHAT!+LIVE!";
+                    titleImage.style.display = "block"; // 显示图片
+                });
+
+                title.addEventListener("mouseout", function() {
+                    title.innerHTML = "+HELLO WORLD+";
+                    titleImage.style.display = "none"; // 隐藏图片
+                });
+                                // 新增表单提交事件处理器
+                document.getElementById("textForm").addEventListener("submit", function(event) {
+                    event.preventDefault(); // 阻止表单默认提交行为
+                    createMarquee(); // 调用函数以处理文本输入
+                });                // 新增表单提交事件处理器
+            }
+            function createMarquee() {
+                var userInput = document.getElementById('userInput').value;
+                var marqueeContainer = document.getElementById('marqueeContainer');
+            
+                // 创建 marquee 元素
+                var marquee = document.createElement('marquee');
+                marquee.textContent = userInput;
+            
+                // 可以在这里添加更多的 marquee 属性，比如滚动速度、方向等
+                marquee.style.position = 'absolute';
+                marquee.style.top = Math.random() * window.innerHeight + 'px';
+                marquee.style.left = Math.random() * window.innerWidth + 'px';
+            
+                // 将 marquee 元素添加到页面中
+                marqueeContainer.appendChild(marquee);
+            }
+                
+      
+        </script>
+        <script type="text/javascript" src="app.js"></script>
+        <style>
+            #title {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="title">+HELLO WORLD+</h1>
+        <img id="titleImage" src="/img/chat-01-01.png" style="display: none; position: absolute; right: 50%;" />
+        <p>
+
+           </p>
+
+
+        <pre class="morph-section">
+        </pre>
+        
+        <div class="info">
+          Live Web - <a href="https://github.com/CoryLee1/LiveWeb-Cory-Week1-Selfportrait" target="_blank">source</a> - Built for my <a href="https://coryleeart.com/" target="_blank">website</a>
+        </div>
+        <script type="text/javascript" src="index.js"></script>
+        <form id="textForm">
+            <input type="text" id="userInput" placeholder="输入文字...">
+            <button type="submit">Danmaku</button>
+        </form>
+        <div id="marqueeContainer"></div>
+    </body>
+</HTML>
